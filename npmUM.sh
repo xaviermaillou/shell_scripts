@@ -10,7 +10,7 @@ ${GRAY}by XAVIER JEAN${NC}
 ________________________________________________________________________________
 
 Hello there! 
-I'm going to help you update NPM, the Node.js package manager!"
+I'm going to help you to update NPM, the Node.js package manager!"
 sleep 2
 read -p " 
 First, tell me your name: " name
