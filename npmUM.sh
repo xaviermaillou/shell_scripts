@@ -6,21 +6,21 @@ echo -e "
 ________________________________________________________________________________
 
 ${BLUE}NPM UPDATE MANAGER
-${GRAY}by XAVIER JEAN${NC}
+${GRAY}par XAVIER JEAN${NC}
 ________________________________________________________________________________
 
-Hello there! 
-I'm going to help you to update NPM, the Node.js package manager!"
+Bonjour! 
+Je vais vous aider à mettre à jour NPM, l'administrateur de paquets de Node.js !"
 sleep 2
 read -p " 
-First, tell me your name: " name
+D'abord, dites-moi votre nom : " name
 echo "
-Ok then, "$name", let's see what I can do for you..." 
+Très bien, "$name", voyons ce que je peux faire pour vous..." 
 
 if ! which npm > /dev/null
 then
 read -p "
-NPM is not installed, would you like to install it? Y/n " -n 1 -r
+NPM n'est pas installé, voulez-vous l'installer ? Y/n " -n 1 -r
 echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -36,21 +36,21 @@ newVersion=$(npm view npm version)
 actualVersion=$(npm -v)
 
 echo "
-The latest available NPM version is:
+La dernière version de NPM disponible est:
 $newVersion"
 echo "
-Your NPM version is:
+Votre version de NPM est:
 $actualVersion"
 
 if [ ${actualVersion//.} -eq ${newVersion//.} ];
 then
 echo "
-Your NPM is up to date!
+Votre NPM est à jour !
 
 "
 else
 read -p "
-Do you want to update NPM? Y/n " -n 1 -r
+Voulez-vous mettre à jour NPM ? Y/n " -n 1 -r
 echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
