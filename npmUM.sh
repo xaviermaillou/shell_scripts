@@ -20,7 +20,7 @@ Ok then, "$name", let's see what I can do for you..."
 if ! which npm > /dev/null
 then
 read -p "
-NPM is not installed, would you like to install it? " -n 1 -r
+NPM is not installed, would you like to install it? Y/n " -n 1 -r
 echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
