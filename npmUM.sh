@@ -9,7 +9,7 @@ ${BLUE}NPM UPDATE MANAGER
 ${GRAY}by XAVIER JEAN${NC}
 ________________________________________________________________________________
 
-Hello there! 
+Hi there! 
 I'm going to help you to update NPM, the Node.js package manager!"
 sleep 2
 read -p " 
