@@ -26,7 +26,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 curl -O https://npmjs.org/install.sh
-sh install.sh
+sudo sh install.sh
 else
 exit
 fi
@@ -55,7 +55,7 @@ echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-npm update -g
+sudo npm install -g npm@latest
 else
 exit
 fi
