@@ -62,7 +62,7 @@ echo "
 Ok, let's see what I can do for you..." 
 
 # Checks if NPM is not installed, if true it proposes to install it
-if command -v npm > /dev/null
+if ! command -v npm > /dev/null
 then
 read -p "
 NPM is not installed yet, would you like to install it? Y/n " -n 1 -r
