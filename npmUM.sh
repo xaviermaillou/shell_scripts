@@ -7,6 +7,8 @@
 # The easiest way to run NPM Update Manager is to execute it from your CLI:
 # bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)
 
+
+# Checks OS type (Mac or Linux) and defines the file name where to add an potential alias
 if [[ "$OSTYPE" == "darwin"* ]]
 then
 aliasFile=".bash_profile"
@@ -19,7 +21,7 @@ echo "
 LINUX detected"
 fi
 
-
+# Function invoked at the end: proposes to add "npm-um" command
 ending_function() {
 sleep 1
 if ! grep -q "npm-um" ~/$aliasFile
@@ -36,6 +38,7 @@ echo -e "${BLUE}NPM Update Manager is now accessible from 'npm-um' command.${NC}
 fi
 fi
 
+############ START ############
 echo "
 Thank you for using NPM Update Manager. See ya!
 ________________________________________________________________________________
@@ -58,6 +61,7 @@ sleep 2
 echo "
 Ok, let's see what I can do for you..." 
 
+# Checks if NPM is not installed, if true it proposes to install it
 if ! command -v npm > /dev/null
 then
 read -p "
@@ -66,13 +70,14 @@ echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-sudo bash <(curl -s https://npmjs.org/install.sh)
+sudo curl -o https://npmjs.org/install.sh
 ending_function
 else
 ending_function
 fi
 fi
 
+# Looks for both latest NPM version available, and installed version of NPM
 newVersion=$(npm view npm version)
 actualVersion=$(npm -v)
 
@@ -83,6 +88,7 @@ echo "
 Your NPM version is:
 $actualVersion"
 
+# Compares versions: if different, it allows to update NPM
 if [ ${actualVersion//.} -eq ${newVersion//.} ];
 then
 echo -e "
