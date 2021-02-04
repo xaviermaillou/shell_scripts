@@ -9,7 +9,7 @@ ${BLUE}NPM UPDATE MANAGER
 ${GRAY}by XAVIER JEAN${NC}
 ________________________________________________________________________________
 
-Hi there! 
+Hello! 
 NPM Update Manager will help you to update NPM, the Node.js package manager!"
 sleep 2
 if ! grep -q "npm-um" ~/.bash_aliases
