@@ -8,12 +8,7 @@
 # bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)
 
 ending_function() {
-if ! [ -f ~/.bash_aliases ]
-then
-touch ~/.bash_aliases
-fi
-
-if ! grep -q "npm-um" ~/.bash_aliases
+if ! grep -q "npm-um" ~/.profile
 then
 read -p "
 'npm-um' command is not installed yet, would you like to install it? Y/n " -n 1 -r
@@ -22,7 +17,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 echo "Adding 'npm-um' command..."
-echo "alias npm-um=\"bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)\"" >> ~/.bash_aliases
+echo "alias npm-um=\"bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)\"" >> ~/.bash_profile
 echo -e "${BLUE}NPM Update Manager is now accessible from 'npm-um' command.${NC}"
 fi
 fi
