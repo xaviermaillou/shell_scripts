@@ -7,14 +7,16 @@
 # The easiest way to run NPM Update Manager is to execute it from your CLI:
 # bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)
 
-if [ "$(uname)" == "Darwin" ]
+if [[ "$OSTYPE" == "darwin"* ]]
 then
 aliasFile=".bash_profile"
-echo "macOS detected"
-elif ["$(uname)" == "Linux" ]
+echo "
+macOS detected"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]
 then
 aliasFile=".bashrc"
-echo "LINUX detected"
+echo "
+LINUX detected"
 fi
 
 
