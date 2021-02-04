@@ -1,4 +1,31 @@
 #!/bin/bash
+
+ending_function() {
+if ! [ -f ~/.bash_aliases ]
+then
+touch ~/.bash_aliases
+fi
+
+if ! grep -q "npm-um" ~/.bash_aliases
+then
+read -p "
+'npm-um' command is not installed yet, would you like to install it? Y/n " -n 1 -r
+echo
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+echo "Adding 'npm-um' command..."
+echo "alias npm-um=\"bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)\"" >> ~/.bash_aliases
+echo -e "${BLUE}NPM Update Manager is now accessible from 'npm-um' command.${NC}"
+fi
+fi
+
+echo "
+Thank you for using NPM Update Manager. See ya!
+________________________________________________________________________________
+"
+exit
+}
 BLUE='\033[1;34m'
 GRAY='\033[0;37m'
 NC='\033[0m'
@@ -12,26 +39,6 @@ ________________________________________________________________________________
 Hi there! 
 NPM Update Manager will help you to update NPM, the Node.js package manager!"
 sleep 2
-if ! grep -q "npm-um" ~/.bash_aliases
-then
-read -p "
-'npm-um' command is not installed yet, would you like to install it? Y/n " -n 1 -r
-echo
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-if [ ! -f ~/.bash_aliases ]
-then
-echo "
-.bash_aliases file does not exist.
-Creating it..."
-touch ~/.bash_aliases
-fi
-echo "Adding 'npm-um' command..."
-echo "alias npm-um=\"bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)\"" >> ~/.bash_aliases
-fi
-echo "NPM Update Manager is now accessible from 'npm-um' command."
-fi
 echo "
 Ok, let's see what I can do for you..." 
 
@@ -45,14 +52,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 curl -O https://npmjs.org/install.sh
 sudo sh install.sh
-echo "
-Thank you for using NPM Update Manager.
-"
+ending_function
 else
-echo "
-Thank you for using NPM Update Manager.
-"
-exit
+ending_function
 fi
 fi
 
@@ -68,11 +70,10 @@ $actualVersion"
 
 if [ ${actualVersion//.} -eq ${newVersion//.} ];
 then
-echo "
-Your NPM is up to date!
-
-Thank you for using NPM Update Manager.
+echo -e "
+${BLUE}Your NPM is up to date!${NC}
 "
+ending_function
 else
 read -p "
 Do you want to update NPM? Y/n " -n 1 -r
@@ -81,13 +82,11 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 sudo npm install -g npm@latest
-echo "
-Thank you for using NPM Update Manager.
+echo -e "
+${BLUE}Your NPM is now up to date!${NC}
 "
+ending_function
 else
-echo "
-Thank you for using NPM Update Manager.
-"
-exit
+ending_function
 fi
 fi
