@@ -33,7 +33,7 @@ fi
 echo "NPM Update Manager is now accessible from 'npm-um' command."
 fi
 echo "
-Now, let's see what I can do for you..." 
+Ok, let's see what I can do for you..." 
 
 if ! command -v npm > /dev/null
 then
