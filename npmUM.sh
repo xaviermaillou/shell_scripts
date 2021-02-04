@@ -10,9 +10,11 @@
 if [ "$(uname)" == "Darwin" ]
 then
 aliasFile=".bash_profile"
+echo "macOS detected"
 elif ["$(uname)" == "Linux" ]
 then
 aliasFile=".bashrc"
+echo "LINUX detected"
 fi
 
 
