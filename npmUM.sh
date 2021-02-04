@@ -12,7 +12,7 @@ ________________________________________________________________________________
 Hi there! 
 NPM Update Manager will help you to update NPM, the Node.js package manager!"
 sleep 2
-if ! command -v npm-um > /dev/null
+if ! grep -q "npm-um" ~/.bash_aliases
 then
 read -p "
 'npm-um' command is not installed yet, would you like to install it? Y/n " -n 1 -r
@@ -28,7 +28,7 @@ Creating it..."
 touch ~/.bash_aliases
 fi
 echo "Adding 'npm-um' command..."
-echo "alias npm-um='bash <(curl -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)'" >> ~/.bash_aliases
+echo "alias npm-um=\"bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)\"" >> ~/.bash_aliases
 fi
 echo "NPM Update Manager is now accessible from 'npm-um' command."
 fi
