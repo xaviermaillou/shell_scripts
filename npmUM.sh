@@ -10,24 +10,48 @@ ${GRAY}by XAVIER JEAN${NC}
 ________________________________________________________________________________
 
 Hi there! 
-I'm going to help you to update NPM, the Node.js package manager!"
+NPM Update Manager will help you to update NPM, the Node.js package manager!"
 sleep 2
-read -p " 
-First, tell me your name: " name
-echo "
-Ok then, "$name", let's see what I can do for you..." 
-
-if ! which npm > /dev/null
+if ! command -v npm-um > /dev/null
 then
 read -p "
-NPM is not installed, would you like to install it? Y/n " -n 1 -r
+'npm-um' command is not installed yet, would you like to install it? Y/n " -n 1 -r
+echo
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+if [ ! -f ~/.bash_aliases ]
+then
+echo "
+.bash_aliases file does not exist.
+Creating it..."
+touch ~/.bash_aliases
+fi
+echo "Adding 'npm-um' command..."
+echo "alias npm-um='bash <(curl -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)'" >> ~/.bash_aliases
+fi
+echo "NPM Update Manager is now accessible from 'npm-um' command."
+fi
+echo "
+Now, let's see what I can do for you..." 
+
+if ! command -v npm > /dev/null
+then
+read -p "
+NPM is not installed yet, would you like to install it? Y/n " -n 1 -r
 echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 curl -O https://npmjs.org/install.sh
 sudo sh install.sh
+echo "
+Thank you for using NPM Update Manager.
+"
 else
+echo "
+Thank you for using NPM Update Manager.
+"
 exit
 fi
 fi
@@ -47,6 +71,7 @@ then
 echo "
 Your NPM is up to date!
 
+Thank you for using NPM Update Manager.
 "
 else
 read -p "
@@ -56,7 +81,13 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 sudo npm install -g npm@latest
+echo "
+Thank you for using NPM Update Manager.
+"
 else
+echo "
+Thank you for using NPM Update Manager.
+"
 exit
 fi
 fi
