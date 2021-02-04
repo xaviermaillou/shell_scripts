@@ -59,7 +59,7 @@ Hi there!
 NPM Update Manager will help you to update NPM, the Node.js package manager!"
 sleep 2
 echo "
-Ok, let's see what I can do for you..." 
+Ok then, let's see what I can do for you..." 
 
 # Checks if NPM is not installed, if true it proposes to install it
 if ! command -v npm > /dev/null
