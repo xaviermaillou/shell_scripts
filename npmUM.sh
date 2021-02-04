@@ -8,7 +8,7 @@
 # bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)
 
 ending_function() {
-if ! grep -q "npm-um" ~/.profile
+if ! grep -q "npm-um" ~/.bash_profile
 then
 read -p "
 'npm-um' command is not installed yet, would you like to install it? Y/n " -n 1 -r
