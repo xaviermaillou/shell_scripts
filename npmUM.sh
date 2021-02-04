@@ -70,7 +70,7 @@ echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-sudo curl -o https://npmjs.org/install.sh
+curl -O -s https://npmjs.org/install.sh
 ending_function
 else
 ending_function
