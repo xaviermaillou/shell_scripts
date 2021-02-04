@@ -17,6 +17,7 @@ fi
 
 
 ending_function() {
+sleep 1
 if ! grep -q "npm-um" ~/$aliasFile
 then
 read -p "
@@ -25,7 +26,7 @@ echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-echo "Adding 'npm-um' command..."
+echo "Adding 'npm-um' command in $aliasFile..."
 echo "alias npm-um=\"bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)\"" >> ~/$aliasFile
 echo -e "${BLUE}NPM Update Manager is now accessible from 'npm-um' command.${NC}"
 fi
