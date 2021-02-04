@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# NPM Update Manager is a small shell script (only for Linux and macOS)
+# Its purpose is to provide a friendly interface to check your NPM version,
+# to update it if needed, or to install NPM if you don't have it yet.
+#
+# The easiest way to run NPM Update Manager is to execute it from your CLI:
+# bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)
+
 ending_function() {
 if ! [ -f ~/.bash_aliases ]
 then
