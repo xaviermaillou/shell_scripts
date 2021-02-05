@@ -69,6 +69,7 @@ then
     echo
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
+    echo "updated"
     then
 
         if [[ "$OSTYPE" == "linux-gnu"* ]] 
