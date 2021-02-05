@@ -78,7 +78,7 @@ then
             then
                 if uname -a | grep -q '^Linux.*Microsoft'
                 then
-                    echo "WSL for Linux not supported." 
+                    sudo apt install nodejs npm
                 else
                     sudo apt install nodejs npm
                 fi
@@ -87,7 +87,6 @@ then
                 sudo apt install nodejs npm
             elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
-                echo "CentOS"
                 sudo yum install nodejs npm
             fi
         elif [[ "$OSTYPE" == "darwin"* ]] 
