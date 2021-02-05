@@ -67,7 +67,6 @@ then
     echo
     read -p "NPM is not installed yet, would you like to install it? Y/n " -n 1 -r
     echo
-    echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
 
@@ -132,7 +131,6 @@ then
 else
     echo
     read -p "Do you want to update NPM? Y/n " -n 1 -r
-    echo
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
