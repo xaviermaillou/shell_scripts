@@ -77,7 +77,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]
 then
 NODEjsURL="https://nodejs.org/dist/v14.15.4/node-v14.15.4-linux-x64.tar.xz"
 fi
-bash <(curl -L -O -s $NODEjsURL)
+bash <(curl -L -O $NODEjsURL)
 curl -L -O -s https://npmjs.org/install.sh
 sudo ./install.sh
 ending_function
