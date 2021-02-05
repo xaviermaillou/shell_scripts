@@ -65,7 +65,7 @@ echo "Ok then, let's see what I can do for you..."
 if ! command -v npm > /dev/null
 then
     echo
-    read -p "NPM is not installed yet, would you like to install it? Y/n " -n 1 -r
+    read -p "NPM is not installed yet, would you like to install it? [Y/n] " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
@@ -73,7 +73,7 @@ then
         if [[ "$OSTYPE" == "linux-gnu"* ]] 
         then
             DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
-            echo "encore updated"
+            echo "updated"
             if [[ ${DISTRIB} = "Ubuntu"* ]] 
             then
                 if uname -a | grep -q '^Linux.*Microsoft'
@@ -88,7 +88,7 @@ then
             then
                 # Debian
                 sudo apt install nodejs npm
-            elif [[ $DISTRIB == "Cent"* ]] 
+            elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
                 # CentOS
                 echo "CentOS"
@@ -130,7 +130,7 @@ then
     ending_function
 else
     echo
-    read -p "Do you want to update NPM? Y/n " -n 1 -r
+    read -p "Do you want to update NPM? [Y/n] " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
