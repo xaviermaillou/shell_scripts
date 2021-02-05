@@ -70,6 +70,14 @@ echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+NODEjsURL="https://nodejs.org/dist/v14.15.4/node-v14.15.4.pkg"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]
+then
+NODEjsURL="https://nodejs.org/dist/v14.15.4/node-v14.15.4-linux-x64.tar.xz"
+fi
+bash <(curl -L -O -s $NODEjsURL)
 curl -L -O -s https://npmjs.org/install.sh
 sudo ./install.sh
 ending_function
