@@ -78,25 +78,20 @@ then
             then
                 if uname -a | grep -q '^Linux.*Microsoft'
                 then
-                    # Ubuntu via WSL Windows Subsystem for Linux
-                    echo "WSL for Linux"
+                    echo "WSL for Linux not supported." 
                 else
-                    # native Ubuntu
                     sudo apt install nodejs npm
                 fi
             elif [[ ${DISTRIB} = "Debian"* ]] 
             then
-                # Debian
                 sudo apt install nodejs npm
             elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
-                # CentOS
                 echo "CentOS"
                 sudo yum install nodejs npm
             fi
         elif [[ "$OSTYPE" == "darwin"* ]] 
         then
-            # macOS OSX
             echo "macOS"
         fi
 
