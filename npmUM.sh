@@ -11,125 +11,135 @@
 # Checks OS type (Mac or Linux) and defines the file name where to add an potential alias
 if [[ "$OSTYPE" == "darwin"* ]]
 then
-aliasFile=".bash_profile"
-echo "
-macOS detected"
+    aliasFile=".bash_profile"
+    echo
+    echo "macOS detected"
 elif [[ "$OSTYPE" == "linux-gnu"* ]]
 then
-aliasFile=".bashrc"
-echo "
-LINUX detected"
+    aliasFile=".bashrc"
+    echo
+    echo "LINUX detected"
 fi
 
 # Function invoked at the end: proposes to add "npm-um" command
 ending_function() {
-sleep 1
-if ! grep -q "npm-um" ~/$aliasFile
-then
-read -p "
-'npm-um' command is not installed yet, would you like to install it? Y/n " -n 1 -r
-echo
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-echo "Adding 'npm-um' command in $aliasFile..."
-echo "alias npm-um=\"bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)\"" >> ~/$aliasFile
-echo -e "${BLUE}NPM Update Manager is now accessible from 'npm-um' command.${NC}"
-fi
-fi
-
-############ START ############
-echo "
-Thank you for using NPM Update Manager. See ya!
-________________________________________________________________________________
-"
-exit
+    sleep 1
+    if ! grep -q "npm-um" ~/$aliasFile
+    then
+        echo
+        read -p "'npm-um' command is not installed yet, would you like to install it? Y/n " -n 1 -r
+        echo
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]
+        then
+            echo "Adding 'npm-um' command in $aliasFile..."
+            echo "alias npm-um=\"bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)\"" >> ~/$aliasFile
+            echo -e "${BLUE}NPM Update Manager is now accessible from 'npm-um' command.${NC}"
+        fi
+    fi
+    echo
+    echo "Thank you for using NPM Update Manager. See ya!"
+    echo "________________________________________________________________________________"
+    echo
+    exit
 }
+
 BLUE='\033[1;34m'
 GRAY='\033[0;37m'
 NC='\033[0m'
-echo -e "
-________________________________________________________________________________
 
-${BLUE}NPM UPDATE MANAGER
-${GRAY}by XAVIER JEAN${NC}
-________________________________________________________________________________
-
-Hi there! 
-NPM Update Manager will help you to update NPM, the Node.js package manager!"
+############ START ############
+echo
+echo "________________________________________________________________________________"
+echo -e "${BLUE}NPM UPDATE MANAGER"
+echo -e "${GRAY}by XAVIER JEAN${NC}"
+echo "________________________________________________________________________________"
+echo
+echo "Hi there!"
+echo "NPM Update Manager will help you to update NPM, the Node.js package manager!"
 sleep 2
-echo "
-Ok then, let's see what I can do for you..." 
+echo
+echo "Ok then, let's see what I can do for you..." 
 
 # Checks if NPM is not installed, if true it proposes to install it
 if ! command -v npm > /dev/null
 then
-read -p "
-NPM is not installed yet, would you like to install it? Y/n " -n 1 -r
-echo
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+    echo
+    read -p "NPM is not installed yet, would you like to install it? Y/n " -n 1 -r
+    echo
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-local DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
-if [[ ${DISTRIB} = "Ubuntu"* ]]; then
-if uname -a | grep -q '^Linux.*Microsoft'; then
-# ubuntu via WSL Windows Subsystem for Linux
-else
-# native ubuntu
-sudo apt install nodejs npm
-fi
-elif [[ ${DISTRIB} = "Debian"* ]]; then
-# debian
-sudo apt install nodejs npm
-elif [[ ${DISTRIB} = "CentOS"* ]]; then
-# centOS
-sudo yum install nodejs npm
-fi
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-# macOS OSX
-fi
+        if [[ "$OSTYPE" == "linux-gnu"* ]] 
+        then
+            local DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
+            if [[ ${DISTRIB} = "Ubuntu"* ]] 
+            then
+                if uname -a | grep -q '^Linux.*Microsoft'
+                then
+                    # ubuntu via WSL Windows Subsystem for Linux
+                    echo "WSL for Linux"
+                else
+                    # native ubuntu
+                    sudo apt install nodejs npm
+                fi
+            elif [[ ${DISTRIB} = "Debian"* ]] 
+            then
+                # debian
+                sudo apt install nodejs npm
+            elif [[ ${DISTRIB} = "CentOS"* ]] 
+            then
+                # debian
+                sudo yum install nodejs npm
+            fi
+        elif [[ "$OSTYPE" == "darwin"* ]] 
+        then
+            # macOS OSX
+            echo "macOS"
+        fi
 
-# curl -L -O -s https://npmjs.org/install.sh
-# sudo ./install.sh
-ending_function
-else
-ending_function
-fi
+        # deprecated:
+        # curl -L -O -s https://npmjs.org/install.sh
+        # sudo ./install.sh
+
+        ending_function
+    else
+    ending_function
+    fi
 fi
 
 # Looks for both latest NPM version available, and installed version of NPM
 newVersion=$(npm view npm version)
 actualVersion=$(npm -v)
 
-echo "
-The latest available NPM version is:
-$newVersion"
-echo "
-Your NPM version is:
-$actualVersion"
+echo
+echo "The latest available NPM version is:"
+echo $newVersion
+echo
+echo "Your NPM version is:"
+echo $actualVersion
 
 # Compares versions: if different, it allows to update NPM
 if [ ${actualVersion//.} -eq ${newVersion//.} ];
 then
-echo -e "
-${BLUE}Your NPM is up to date!${NC}
-"
-ending_function
+    echo
+    echo -e "${BLUE}Your NPM is up to date!${NC}"
+    echo
+    ending_function
 else
-read -p "
-Do you want to update NPM? Y/n " -n 1 -r
-echo
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-sudo npm install -g npm@latest
-echo -e "
-${BLUE}Your NPM is now up to date!${NC}
-"
-ending_function
-else
-ending_function
-fi
+    echo
+    read -p "Do you want to update NPM? Y/n " -n 1 -r
+    echo
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        sudo npm install -g npm@latest
+        echo
+        echo -e "${BLUE}Your NPM is now up to date!${NC}"
+        echo
+        ending_function
+    else
+        ending_function
+    fi
 fi
