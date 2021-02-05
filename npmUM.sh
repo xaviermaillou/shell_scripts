@@ -69,30 +69,29 @@ then
     echo
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
-    echo "updated"
     then
 
         if [[ "$OSTYPE" == "linux-gnu"* ]] 
         then
-        echo "LINUX"
             DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
             if [[ ${DISTRIB} = "Ubuntu"* ]] 
             then
                 if uname -a | grep -q '^Linux.*Microsoft'
                 then
-                    # ubuntu via WSL Windows Subsystem for Linux
+                    # Ubuntu via WSL Windows Subsystem for Linux
                     echo "WSL for Linux"
                 else
-                    # native ubuntu
+                    # native Ubuntu
                     sudo apt install nodejs npm
                 fi
             elif [[ ${DISTRIB} = "Debian"* ]] 
             then
-                # debian
+                # Debian
                 sudo apt install nodejs npm
             elif [[ ${DISTRIB} = "CentOS"* ]] 
             then
-                # debian
+                # CentOS
+                echo "CentOS"
                 sudo yum install nodejs npm
             fi
         elif [[ "$OSTYPE" == "darwin"* ]] 
