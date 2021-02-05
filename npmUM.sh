@@ -67,13 +67,13 @@ then
     echo
     read -p "NPM is not installed yet, would you like to install it? [Y/n] " -n 1 -r
     echo
+    echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
 
         if [[ "$OSTYPE" == "linux-gnu"* ]] 
         then
             DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
-            echo "UP"
             if [[ ${DISTRIB} = "Ubuntu"* ]] 
             then
                 if uname -a | grep -q '^Linux.*Microsoft'
@@ -131,6 +131,7 @@ then
 else
     echo
     read -p "Do you want to update NPM? [Y/n] " -n 1 -r
+    echo
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
