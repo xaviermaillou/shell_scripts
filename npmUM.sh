@@ -73,7 +73,7 @@ then
 
         if [[ "$OSTYPE" == "linux-gnu"* ]] 
         then
-            local DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
+            DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
             if [[ ${DISTRIB} = "Ubuntu"* ]] 
             then
                 if uname -a | grep -q '^Linux.*Microsoft'
