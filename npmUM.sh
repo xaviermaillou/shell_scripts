@@ -73,6 +73,7 @@ then
 
         if [[ "$OSTYPE" == "linux-gnu"* ]] 
         then
+        echo "LINUX"
             DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
             if [[ ${DISTRIB} = "Ubuntu"* ]] 
             then
