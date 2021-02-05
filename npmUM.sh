@@ -73,8 +73,8 @@ then
         if [[ "$OSTYPE" == "linux-gnu"* ]] 
         then
             DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
-            echo "updated"
-            if [[ $DISTRIB == *""* ]]
+            echo "newly updated"
+            if [[ $DISTRIB == *"Cent"* ]]
             then
                 echo "This is "$DISTRIB
             fi
