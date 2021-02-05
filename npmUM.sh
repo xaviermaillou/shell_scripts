@@ -70,16 +70,29 @@ echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-if [[ "$OSTYPE" == "darwin"* ]]
-then
-NODEjsURL="https://nodejs.org/dist/v14.15.4/node-v14.15.4.pkg"
-elif [[ "$OSTYPE" == "linux-gnu"* ]]
-then
-NODEjsURL="https://nodejs.org/dist/v14.15.4/node-v14.15.4-linux-x64.tar.xz"
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+local DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
+if [[ ${DISTRIB} = "Ubuntu"* ]]; then
+if uname -a | grep -q '^Linux.*Microsoft'; then
+# ubuntu via WSL Windows Subsystem for Linux
+else
+# native ubuntu
+sudo apt install nodejs npm
 fi
-bash <(curl -L -O $NODEjsURL)
-curl -L -O -s https://npmjs.org/install.sh
-sudo ./install.sh
+elif [[ ${DISTRIB} = "Debian"* ]]; then
+# debian
+sudo apt install nodejs npm
+elif [[ ${DISTRIB} = "CentOS"* ]]; then
+# centOS
+sudo yum install nodejs npm
+fi
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+# macOS OSX
+fi
+
+# curl -L -O -s https://npmjs.org/install.sh
+# sudo ./install.sh
 ending_function
 else
 ending_function
