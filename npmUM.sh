@@ -73,11 +73,7 @@ then
         if [[ "$OSTYPE" == "linux-gnu"* ]] 
         then
             DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
-            echo "newly updated"
-            if [[ $DISTRIB == *"Cent"* ]]
-            then
-                echo "This is "$DISTRIB
-            fi
+            echo "still updated"
             if [[ ${DISTRIB} = "Ubuntu"* ]] 
             then
                 if uname -a | grep -q '^Linux.*Microsoft'
@@ -92,7 +88,7 @@ then
             then
                 # Debian
                 sudo apt install nodejs npm
-            elif [[ ${DISTRIB} == "CentOS"* ]] 
+            elif [[ $DISTRIB == *"Cent"* ]] 
             then
                 # CentOS
                 echo "CentOS"
