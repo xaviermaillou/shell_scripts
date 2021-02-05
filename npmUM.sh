@@ -73,7 +73,6 @@ then
         if [[ "$OSTYPE" == "linux-gnu"* ]] 
         then
             DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
-            echo $DISTRIB
             if [[ ${DISTRIB} = "Ubuntu"* ]] 
             then
                 if uname -a | grep -q '^Linux.*Microsoft'
@@ -88,7 +87,7 @@ then
             then
                 # Debian
                 sudo apt install nodejs npm
-            elif [[ $DISTRIB = "CentOS"* ]] 
+            elif [[ "$DISTRIB" == "CentOS"* ]] 
             then
                 # CentOS
                 echo "CentOS"
