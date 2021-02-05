@@ -87,7 +87,7 @@ then
             then
                 # Debian
                 sudo apt install nodejs npm
-            elif [[ "$DISTRIB" == "CentOS"* ]] 
+            elif [[ ${DISTRIB} == "CentOS"* ]] 
             then
                 # CentOS
                 echo "CentOS"
