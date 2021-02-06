@@ -19,6 +19,12 @@ then
     aliasFile=".bashrc"
     echo
     echo "LINUX detected"
+    if [[ ${DISTRIB} = "Debian"* ]] 
+    then
+        echo "Debian is not supported yet..."
+        sleep 1
+        exit
+    fi
 fi
 
 # Function invoked at the end: proposes to add "npm-um" command
@@ -83,9 +89,6 @@ then
                 else
                     sudo apt install nodejs npm
                 fi
-            elif [[ ${DISTRIB} = "Debian"* ]] 
-            then
-                sudo apt install nodejs npm
             elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
                 sudo yum install nodejs npm
