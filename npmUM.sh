@@ -35,10 +35,11 @@ ending_function() {
             echo "Adding 'npm-um' command in $aliasFile..."
             echo "alias npm-um=\"bash <(curl -H 'Cache-control: no-cache' -s https://raw.githubusercontent.com/xaviermaillou/shell_scripts/master/npmUM.sh)\"" >> ~/$aliasFile
             echo -e "${BLUE}NPM Update Manager is now accessible from 'npm-um' command.${NC}"
+            sleep 2
         fi
     fi
     echo
-    echo "Thank you for using NPM Update Manager. See ya!"
+    echo "Thank you for using NPM Update Manager. See you later!"
     echo "________________________________________________________________________________"
     echo
     exit
@@ -59,7 +60,7 @@ echo "Hi there!"
 echo "NPM Update Manager will help you to update NPM, the Node.js package manager!"
 sleep 2
 echo
-echo "Ok then, let's see what I can do for you..." 
+echo "Let's see what I can do for you..." 
 
 # Checks if NPM is not installed, if true it proposes to install it
 if ! command -v npm > /dev/null
@@ -91,7 +92,9 @@ then
             fi
         elif [[ "$OSTYPE" == "darwin"* ]] 
         then
-            echo "macOS"
+            echo "You need to install Node.js from its official website..."
+            sleep 2
+            open "https://nodejs.org/en/"
         fi
 
         # deprecated:
