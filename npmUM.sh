@@ -58,7 +58,8 @@ NC='\033[0m'
 ############ START ############
 echo
 echo "________________________________________________________________________________"
-echo -e "${BLUE}NPM UPDATE MANAGER 1.3.4"
+echo -e "${BLUE}NPM UPDATE MANAGER"
+echo -e "${NC}1.3.4"
 echo -e "${GRAY}by XAVIER JEAN${NC}"
 echo "________________________________________________________________________________"
 echo
@@ -83,10 +84,14 @@ then
             DISTRIB=$(awk '/^NAME/{print}' /etc/os-release)
             if [[ ${DISTRIB} = *"Ubuntu"* ]] 
             then
+                echo "Using APT to install NPM..."
+                echo
                 sudo apt install nodejs
                 sudo apt install npm
             elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
+                echo "Using YUM to install NPN..."
+                echo
                 sudo yum install nodejs npm
             fi
         elif [[ "$OSTYPE" == "darwin"* ]] 
