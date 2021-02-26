@@ -80,15 +80,10 @@ then
 
         if [[ "$OSTYPE" == "linux-gnu"* ]] 
         then
-            DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
-            if [[ ${DISTRIB} = "Ubuntu"* ]] 
+            DISTRIB=$(awk '/^NAME/{print}' /etc/os-release)
+            if [[ ${DISTRIB} = *"Ubuntu"* ]] 
             then
-                if uname -a | grep -q '^Linux.*Microsoft'
-                then
-                    sudo apt install nodejs npm
-                else
-                    sudo apt install nodejs npm
-                fi
+                sudo apt install nodejs npm
             elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
                 sudo yum install nodejs npm
