@@ -86,12 +86,12 @@ then
             then
                 echo "Using APT to install NPM..."
                 echo
-                sudo apt install nodejs npm
+                sudo apt install nodejs
             elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
                 echo "Using YUM to install NPN..."
                 echo
-                sudo yum install nodejs npm
+                sudo yum install nodejs
             fi
         elif [[ "$OSTYPE" == "darwin"* ]] 
         then
