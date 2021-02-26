@@ -59,8 +59,8 @@ NC='\033[0m'
 echo
 echo "________________________________________________________________________________"
 echo -e "${BLUE}NPM UPDATE MANAGER"
-echo -e "${NC}1.3.4"
-echo -e "${GRAY}by XAVIER JEAN${NC}"
+echo -e "${GRAY}1.3.4"
+echo -e "by XAVIER JEAN${NC}"
 echo "________________________________________________________________________________"
 echo
 echo "Hi there!"
