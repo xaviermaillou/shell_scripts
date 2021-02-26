@@ -58,7 +58,7 @@ NC='\033[0m'
 ############ START ############
 echo
 echo "________________________________________________________________________________"
-echo -e "${BLUE}NPM UPDATE MANAGER 1.3.3"
+echo -e "${BLUE}NPM UPDATE MANAGER 1.3.4"
 echo -e "${GRAY}by XAVIER JEAN${NC}"
 echo "________________________________________________________________________________"
 echo
@@ -84,6 +84,7 @@ then
             if [[ ${DISTRIB} = *"Ubuntu"* ]] 
             then
                 sudo apt install nodejs npm
+                sudo apt install npm
             elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
                 sudo yum install nodejs npm
