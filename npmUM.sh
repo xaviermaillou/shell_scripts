@@ -84,6 +84,7 @@ then
             if [[ ${DISTRIB} = *"Ubuntu"* ]] 
             then
                 sudo apt install nodejs
+                sudo apt install npm
             elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
                 sudo yum install nodejs npm
