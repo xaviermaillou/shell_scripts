@@ -86,8 +86,7 @@ then
             then
                 echo "Using APT to install NPM..."
                 echo
-                sudo apt install nodejs
-                sudo apt install npm
+                sudo apt install nodejs npm
             elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
                 echo "Using YUM to install NPN..."
