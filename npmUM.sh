@@ -83,8 +83,7 @@ then
             DISTRIB=$(awk '/^NAME/{print}' /etc/os-release)
             if [[ ${DISTRIB} = *"Ubuntu"* ]] 
             then
-                sudo apt install nodejs npm
-                sudo apt install npm
+                sudo apt install nodejs
             elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
                 sudo yum install nodejs npm
