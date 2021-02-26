@@ -59,7 +59,7 @@ NC='\033[0m'
 echo
 echo "________________________________________________________________________________"
 echo -e "${BLUE}NPM UPDATE MANAGER"
-echo -e "${GRAY}1.3.4"
+echo -e "${GRAY}1.3.5"
 echo -e "by XAVIER JEAN${NC}"
 echo "________________________________________________________________________________"
 echo
@@ -87,11 +87,17 @@ then
                 echo "Using APT to install NPM..."
                 echo
                 sudo apt install nodejs npm
+                sudo npm install -g n
+                sudo n latest
+                sudo npm install -g npm@latest
             elif [[ ${DISTRIB} = *"Cent"* ]] 
             then
                 echo "Using YUM to install NPN..."
                 echo
                 sudo yum install nodejs npm
+                sudo npm install -g n
+                sudo n latest
+                sudo npm install -g npm@latest
             fi
         elif [[ "$OSTYPE" == "darwin"* ]] 
         then
