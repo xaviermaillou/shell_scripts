@@ -11,9 +11,18 @@
 # Checks OS type (Mac or Linux) and defines the file name where to add an potential alias
 if [[ "$OSTYPE" == "darwin"* ]]
 then
-    aliasFile=".bash_profile"
     echo
     echo "macOS detected"
+
+    if [ "$SHELL" == "/bin/bash" ]
+    then
+        aliasFile=".bash_profile"
+    fi
+
+    if [ "$SHELL" == "/bin/zsh" ]
+    then
+        aliasFile=".zshrc"
+    fi
 elif [[ "$OSTYPE" == "linux-gnu"* ]]
 then
     aliasFile=".bashrc"
